@@ -1,0 +1,46 @@
+plugins {
+	id 'org.springframework.boot' version '2.4.0-M4'
+	id 'io.spring.dependency-management' version '1.0.10.RELEASE'
+	id 'java'
+
+}
+
+group = 'com.springboot.selenium'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+repositories {
+	mavenCentral()
+	jcenter()
+	google()
+	maven { url 'https://repo.spring.io/milestone' }
+
+	maven {
+		url "https://maven.springframework.org/release"
+	}
+	maven {
+		url "https://maven.restlet.com"
+	}
+
+}
+
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter'
+	//implementation 'org.testng:testng:6.14.3'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	compile group: 'org.seleniumhq.selenium', name: 'selenium-java',version: '3.141.59'
+	compile group: 'org.seleniumhq.selenium', name: 'selenium-server', version: '3.141.59'
+	compile group: 'io.github.bonigarcia', name: 'webdrivermanager', version: '4.2.2'
+	compile 'com.github.javafaker:javafaker:1.0.2'
+	testCompile 'org.testng:testng:6.14.3'
+	
+
+}
+
+test {
+	//useTestNG()
+	useTestNG{
+		suites 'src/main/resources/testNG.xml'
+	}
+}
